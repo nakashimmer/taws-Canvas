@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>2</title>
+		<style>
+			canvas{border:1px solid gray;margin:10px auto;display:block;}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas1" width="300" height="300"></canvas>
+
+		<script>
+			//要素の取得
+			const CANVAS1 = document.getElementById("canvas1");
+			const CTX1 = CANVAS1.getContext("2d");
+
+			//★図形を描画
+			
+			//関数の実行
+			rectDraw();
+
+			//関数の定義
+			function rectDraw(){
+				CTX1.fillStyle = "indigo";
+				CTX1.fillRect(125, 125, 50, 50);
+			}
+
+
+		</script>	
+	</body>
+</html>
