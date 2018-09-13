@@ -24,6 +24,15 @@
 			//②関数の実行
 			rectDraw(RECT1);
 
+			RECT1.x=150; RECT1.color="red";
+			rectDraw(RECT1);
+
+			RECT1.x=50; RECT1.y=150; RECT1.color="green";
+			rectDraw(RECT1);
+
+			RECT1.x=150; RECT1.y=150; RECT1.color="yellow";
+			rectDraw(RECT1);
+
 			//関数の定義
 			function rectDraw(rect){
 				CTX1.fillStyle = rect.color;

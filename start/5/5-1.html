@@ -4,22 +4,46 @@
 		<meta charset="utf-8">
 		<title>5</title>
 		<style>
-			canvas{background-color:skyblue;margin:10px auto;display:block;}
+			canvas{border:1px dotted gray;margin:10px auto;display:block;}
+			/*① 背景*/
+
+
 		</style>
 	</head>
 	<body>
-		<!-- ②HTMLの記述場所 -->
-		<canvas id="canvas1" width="310" height="320"></canvas>
+		<canvas id="canvas1" width="400" height="400"></canvas>
 		<script>
-			//③JavaScriptの記述場所
-			const CANVAS1=document.getElementById("canvas1");
-			const CTX1=canvas1.getContext("2d");
-			const POS={x:150,y:150};
-			let f=false;
+			const CANVAS1 = document.getElementById("canvas1");
+			const CTX1 = CANVAS1.getContext("2d");
 
-			CANVAS1.addEventListener();
-			CANVAS1.addEventListener();
-			CANVAS1.addEventListener();
+			//②効果音初期化
+
+			//③初期化
+
+			//実行
+			setInterval(loop, 50);
+
+			function loop(){
+				//①消去----------------------
+				CTX1.clearRect(0, 0, canvas1.width, canvas1.height);
+
+				//②描画----------------------
+
+				//ポイント
+
+				//③計算---------------
+
+				//壁衝突計算
+
+				//ポイントゲット
+
+			}
+
+			//④ 矩形の定義
+			function rectDraw(rect){
+				CTX1.fillStyle = rect.color;
+				CTX1.fillRect(rect.x-rect.w/2, rect.y-rect.h/2, rect.w, rect.h);
+			}
 		</script>
 	</body>
 </html>

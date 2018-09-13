@@ -15,8 +15,23 @@
 			const CANVAS1=document.getElementById("canvas1");
 			const CTX1=canvas1.getContext("2d");
 			const POS={x:150,y:150};
+			let f=false;
 
-			CANVAS1.addEventListener();
+			CANVAS1.addEventListener(
+				"mousemove",
+				(e)=>{
+					const RECT = e.target.getBoundingClientRect();
+					POS.x = e.clientX - RECT.left;
+					POS.y = e.clientY - RECT.top;
+					if(f===true){
+						CTX1.fillStyle="red";
+						CTX1.fillRect(POS.x-2, POS.y-2, 4, 4);
+					}
+				}
+			);
+
+			CANVAS1.addEventListener("mousedown", ()=>{f=true;});
+			CANVAS1.addEventListener("mouseup", ()=>{f=false;});
 		</script>
 	</body>
 </html>

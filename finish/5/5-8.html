@@ -2,12 +2,11 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>6</title>
+		<title>5</title>
 		<style>
-			canvas{background-color:skyblue;margin:10px auto;display:block;}
+			canvas{border:1px dotted gray;margin:10px auto;display:block;}
 			/*① 背景*/
 			#canvas1{
-				border:1px solid gray;
 				background-image:url(bg1.png);
 			}
 
@@ -24,12 +23,15 @@
 			AUDIO1.src="audio1.mp3";
 
 			//③初期化
-			//③初期化
-			const TARGET1 = {x:200, y:100, w:50, h:50, dir:1, color:"orange"};		//ターゲット
-			const PLAYER1 = {x:200, y:300, w:50, h:50, color:"skyblue"};				//プレイヤー
-			const BALL1 = {x:-10, y:-10, w:5, h:5 ,color:"pink"};							//ボール
-			let point = 0;																					//得点
-
+			const TARGET1 = {
+				x:200, y:100, w:50, h:50, dir:1,img:new Image()
+			};
+			TARGET1.img.src = "target1.png";
+			const PLAYER1 = {x:200, y:300, w:50, h:50, img:new Image()};
+			PLAYER1.img.src = "player1.png";
+			const BALL1 = {x:-10, y:-10, w:5, h:5, img:new Image()};
+			BALL1.img.src = "ball1.png";
+			let point = 0;	
 
 			//実行
 			setInterval(loop, 50);
@@ -39,13 +41,13 @@
 				CTX1.clearRect(0, 0, canvas1.width, canvas1.height);
 
 				//②描画----------------------
-				rectDraw(TARGET1);
-				rectDraw(PLAYER1);
-				rectDraw(BALL1);
+				imgDraw(TARGET1);
+				imgDraw(PLAYER1);
+				imgDraw(BALL1);
 
 				//ポイント
-				CTX1.fillStyle = "black";
-				CTX1.font = "20px sans-serif ";
+				CTX1.fillStyle = "white";
+				CTX1.font = "20px sans-serif";
 				CTX1.fillText(point, 0, 400);
 
 				//③計算---------------
@@ -67,14 +69,30 @@
 			}
 
 			//イベント処理
+			CANVAS1.addEventListener(
+				"mousedown",
+				(e)=>{
+					BALL1.x = PLAYER1.x;
+					BALL1.y = PLAYER1.y; 
+				}
+			);
 
+			CANVAS1.addEventListener(
+				"mousemove",
+				(e)=>{
+					const RECT = e.target.getBoundingClientRect();
+					PLAYER1.x = e.clientX-RECT.left;
+				}
+			);
+			
 
-			}
-
-			//④ 矩形の定義
-			function rectDraw(rect){
-				CTX1.fillStyle = rect.color;
-				CTX1.fillRect(rect.x-rect.w/2, rect.y-rect.h/2, rect.w, rect.h);
+			//④ 画像の定義
+			function imgDraw(image){
+				CTX1.drawImage(
+					image.img, 
+					image.x-image.w/2, 
+					image.y-image.h/2
+				);
 			}
 		</script>
 	</body>
