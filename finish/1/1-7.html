@@ -43,8 +43,8 @@
 			let angle1 =  45;									//開始角は45度
 			let angle2 = 315;									//終了角は315度
 
-			let rad1 = angle1/180 * Math.PI;			//45度をラジアンに変換
-			let rad2 = angle2/180 * Math.PI;			//315度をラジアンに変換
+			let rad1 = angle1/360 * 2*Math.PI;			//45度をラジアンに変換
+			let rad2 = angle2/360 * 2*Math.PI;			//315度をラジアンに変換
 
 			CTX1.beginPath();
 			CTX1.moveTo(50,150);
