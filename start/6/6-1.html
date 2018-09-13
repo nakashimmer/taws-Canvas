@@ -2,32 +2,44 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>3</title>
+		<title>6</title>
 		<style>
 			canvas{background-color:skyblue;margin:10px auto;display:block;}
+			/*① 背景*/
+
+
 		</style>
 	</head>
 	<body>
-		<canvas id="canvas1" width="300" height="300"></canvas>
+		<canvas id="canvas1" width="400" height="400"></canvas>
 		<script>
 			const CANVAS1 = document.getElementById("canvas1");
 			const CTX1 = CANVAS1.getContext("2d");
 
-			//① 初期化
-			const RECT1 = {
-				x:100, y:100, w:50, h:50, color:"indigo",
-				angle:0, scaleX:1, scaleY:1,
-				dx:1, dy:1
-			};
+			//②効果音初期化
 
-			//② 実行
-			setInterval(loop, 50);										//タイマ(関数名,ミリ秒)
+			//③初期化
+
+			//実行
+			setInterval(loop, 50);
 
 			function loop(){
-				rectDraw(RECT1);
+				//①消去----------------------
+				CTX1.clearRect(0, 0, canvas1.width, canvas1.height);
+
+				//②描画----------------------
+
+				//ポイント
+
+				//③計算---------------
+
+				//壁衝突計算
+
+				//ポイントゲット
+
 			}
 
-			//③ 定義
+			//④ 矩形の定義
 			function rectDraw(rect){
 				CTX1.fillStyle = rect.color;
 				CTX1.fillRect(rect.x-rect.w/2, rect.y-rect.h/2, rect.w, rect.h);

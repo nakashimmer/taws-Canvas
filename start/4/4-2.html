@@ -8,15 +8,26 @@
 		</style>
 	</head>
 	<body>
-		<!-- ②HTMLの記述場所 -->
-		<canvas id="canvas1" width="310" height="320"></canvas>
+		<canvas id="canvas1" width="300" height="300"></canvas>
 		<script>
-			//③JavaScriptの記述場所
-			const CANVAS1=document.getElementById("canvas1");
-			const CTX1=canvas1.getContext("2d");
-			const POS={x:150,y:150};
+			const CANVAS1 = document.getElementById("canvas1");
+			const CTX1 = CANVAS1.getContext("2d");
 
-			CANVAS1.addEventListener();
+			//① 初期化
+			const RECT1 = {
+				x:100, y:100, w:50, h:50, color:"indigo",
+				angle:0, scaleX:1, scaleY:1,
+				dx:1, dy:1
+			};
+
+			//② 実行
+			rectDraw(RECT1);
+
+			//③ 定義
+			function rectDraw(rect){
+				CTX1.fillStyle = rect.color;
+				CTX1.fillRect(rect.x-rect.w/2, rect.y-rect.h/2, rect.w, rect.h);
+			}
 		</script>
 	</body>
 </html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>4</title>
+		<style>
+			canvas1{border:1px dotted gray;margin:50px auto;}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas1" width="600" height="400"></canvas>
+
+		<script>
+			//要素の取得
+			const CANVAS1 = document.getElementById("canvas1");
+			const CTX1 = CANVAS1.getContext("2d");
+			
+			//①補助線
+			myLine(-50,0,450,0,2,"blue");
+			myLine(0,-50, 0,300, 2, "blue");
+
+			function myLine(x1,y1, x2,y2, w, color){
+				//直線
+				CTX1.beginPath();											//パスの開始
+				CTX1.moveTo(x1+100, 300-y1);										//開始点
+				CTX1.lineTo(x2+100, 300-y2);										//終了点
+				CTX1.lineWidth = w;										//枠線の太さ
+				CTX1.strokeStyle = color;								//枠線のいろ
+				CTX1.stroke();												//パスに枠線を引く
+			}
+
+			//②棒グラフ
+			myRect(0,50, "green");
+			myRect(100,100, "green");
+			myRect(200,250, "green");
+			myRect( 300,350, "green");
+
+			function myRect(x,y, color){
+				CTX1.fillStyle = color;									//塗り色を指定する
+				CTX1.fillRect(105+x,  300, 95, -y);			//矩形を描画(x座標,y座標,幅,高さ)
+			}
+
+			//③折れ線グラフ
+			myPolyLine(50,20, 150,80, 250,90, 350,150, 3, "red");
+			
+			function myPolyLine(x1,y1, x2,y2, x3,y3, x4,y4, w, color){
+				CTX1.beginPath();									//パスの開始
+				CTX1.moveTo(100+x1, 300-y1);									//開始点
+				CTX1.lineTo(100+x2, 300-y2);									//経過点
+				CTX1.lineTo(100+x3, 300-y3);									//経過点
+				CTX1.lineTo(100+x4, 300-y4);									//経過点
+				CTX1.lineWidth = w;									//枠線の太さ
+				CTX1.strokeStyle = color;					//枠線のいろ
+				CTX1.stroke();											//パスに枠線を引く			
+			}
+
+			//④円グラフ
+			myPi(200,100,100, 0, 60,"rgba(0,0,255,0.5)");
+			myPi(200,100,100, 60, 100,"rgba(255,255,0,0.5)");
+
+			function myPi(x,y,r, start,end, color){
+				CTX1.beginPath();
+				CTX1.moveTo(x,y);
+				CTX1.arc(
+					x,y,r,
+					(start-25)/100 *2*Math.PI,
+					(end-25)/100 *2*Math.PI,
+					false
+				);
+				CTX1.fillStyle = color;
+				CTX1.fill();
+			};
+
+			//⑥文字
+			myText("0", 100, 320, "gray","center");			//文字を描画("文字列",x,y)
+			myText("100", 100+100, 320, "gray","center");
+			myText("200", 100+200, 320, "gray","center");
+			myText("300", 100+300, 320, "gray","center");
+			myText("400", 100+400, 320, "gray","center");
+			myText("0", 100, 300, "gray","right");
+			myText("100", 100, 300-100, "gray","right");
+			myText("200", 100, 300-200, "gray","right");
+
+			function myText(text,x,y,color,align){
+				CTX1.fillStyle = color;
+				CTX1.font = "20px serif";						//文字の大きさとフォントを設定
+				CTX1.textAlign=align;
+				CTX1.fillText(text, x,y);			//文字を描画("文字列",x,y)
+			}
+		</script>	
+	</body>
+</html>

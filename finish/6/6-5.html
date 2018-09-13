@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>5</title>
+		<title>6</title>
 		<style>
 			canvas{background-color:skyblue;margin:10px auto;display:block;}
 			/*① 背景*/
@@ -49,25 +49,10 @@
 				CTX1.fillText(point, 0, 400);
 
 				//③計算---------------
-				TARGET1.x += TARGET1.dir;
-				BALL1.y -= 5;
-	
+
 				//壁衝突計算
-				if( (TARGET1.x < TARGET1.w/2) || (CANVAS1.width - TARGET1.w/2 < TARGET1.x) ){
-					TARGET1.dir *= -1;
-				}
-	
+
 				//ポイントゲット
-				if(
-					(100 == BALL1.y) && (Math.abs(TARGET1.x - BALL1.x)<25)
-				){
-					point++; 
-					AUDIO1.play();							//音を鳴らす
-				}
-			}
-
-			//イベント処理
-
 
 			}
 

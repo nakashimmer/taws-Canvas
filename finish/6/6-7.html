@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>5</title>
+		<title>6</title>
 		<style>
 			canvas{background-color:skyblue;margin:10px auto;display:block;}
 			/*① 背景*/
@@ -39,16 +39,50 @@
 				CTX1.clearRect(0, 0, canvas1.width, canvas1.height);
 
 				//②描画----------------------
+				rectDraw(TARGET1);
+				rectDraw(PLAYER1);
+				rectDraw(BALL1);
 
 				//ポイント
+				CTX1.fillStyle = "white";
+				CTX1.font = "20px sans-serif";
+				CTX1.fillText(point, 0, 400);
 
 				//③計算---------------
-
+				TARGET1.x += TARGET1.dir;
+				BALL1.y -= 5;
+	
 				//壁衝突計算
-
+				if( (TARGET1.x < TARGET1.w/2) || (CANVAS1.width - TARGET1.w/2 < TARGET1.x) ){
+					TARGET1.dir *= -1;
+				}
+	
 				//ポイントゲット
-
+				if(
+					(100 == BALL1.y) && (Math.abs(TARGET1.x - BALL1.x)<25)
+				){
+					point++; 
+					AUDIO1.play();							//音を鳴らす
+				}
 			}
+
+			//イベント処理
+			CANVAS1.addEventListener(
+				"mousedown",
+				(e)=>{
+					BALL1.x = PLAYER1.x;
+					BALL1.y = PLAYER1.y; 
+				}
+			);
+
+			CANVAS1.addEventListener(
+				"mousemove",
+				(e)=>{
+					const RECT = e.target.getBoundingClientRect();
+					PLAYER1.x = e.clientX-RECT.left;
+				}
+			);
+			
 
 			//④ 矩形の定義
 			function rectDraw(rect){
