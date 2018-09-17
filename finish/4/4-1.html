@@ -23,8 +23,8 @@
 					const RECT = e.target.getBoundingClientRect();
 					POS.x = e.clientX - RECT.left;
 					POS.y = e.clientY - RECT.top;
+					CTX1.fillStyle="red";
 					if(f===true){
-						CTX1.fillStyle="red";
 						CTX1.fillRect(POS.x-2, POS.y-2, 4, 4);
 					}
 				}

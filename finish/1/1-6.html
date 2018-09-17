@@ -59,10 +59,10 @@
 			CTX1.stroke();
 
 			//⑤画像(静止)
-			var img1 = new Image();							//画像のオブジェクト(もの)を生成
+			const img1 = new Image();							//画像のオブジェクト(もの)を生成
 			img1.src = "image1.png";						//画像ファイルを指定(src：ソース)
 
-			img1.onload = function(){
+			img1.onload = ()=>{
 				CTX1.drawImage(img1, 100, 100, 100, 100); 	//画像描画(オブジェクト,x,y,幅,高さ)
 			}
 			

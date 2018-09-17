@@ -16,7 +16,6 @@
 			//① 初期化
 			const RECT1 = {
 				x:100, y:100, w:50, h:50, color:"indigo",
-				angle:0, scaleX:1, scaleY:1,
 				dx:1, dy:1
 			};
 
@@ -39,11 +38,11 @@
 				rect.y += rect.dy;
 				console.log(rect.x);
 
-				if( (rect.x < rect.w/2) || (canvas1.width - rect.w/2 < rect.x) ){
+				if( (rect.x < rect.w/2) || (CANVAS1.width - rect.w/2 < rect.x) ){
 					rect.dx *= -1;
 				}
 
-				if( (rect.y < rect.h/2) || (canvas1.height - rect.h/2 < rect.y) ){
+				if( (rect.y < rect.h/2) || (CANVAS1.height - rect.h/2 < rect.y) ){
 					rect.dy *= -1;
 				}
 			}
