@@ -1,4 +1,4 @@
-# tawsCanvas
-東京アプリ・ワークショップ
+# 一日まるごとどっぷり「Canvas」
+
 
 https://nakashimmer.github.io/tawsCanvas/
