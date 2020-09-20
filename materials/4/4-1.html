@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>4</title>
+		<style>
+			canvas{border:1px dotted gray;margin:10px auto;display:block;}
+		</style>
+	</head>
+	<body>
+		<!-- ②HTMLの記述場所 -->
+		<canvas id="canvas1" width="310" height="320"></canvas>
+		<script>
+			//③JavaScriptの記述場所
+			const canvas1=document.getElementById("canvas1");
+			const ctx1=canvas1.getContext("2d");
+			const pos={x:150,y:150};
+			let f=false;
+
+			canvas1.addEventListener(
+				"mousemove",
+				(e)=>{
+					const rect = e.target.getBoundingClientRect();
+					pos.x = e.clientX - rect.left;
+					pos.y = e.clientY - rect.top;
+					ctx1.fillStyle="red";
+					if(f===true){
+						ctx1.fillRect(pos.x-2, pos.y-2, 4, 4);
+					}
+				}
+			);
+
+			canvas1.addEventListener("mousedown", ()=>{f=true;});
+			canvas1.addEventListener("mouseup", ()=>{f=false;});
+		</script>
+	</body>
+</html>

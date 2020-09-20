@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3</title>
+		<style>
+			canvas{border:1px dotted gray;margin:10px auto;display:block;}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas1" width="300" height="300"></canvas>
+		<script>
+			const canvas1 = document.getElementById("canvas1");
+			const ctx1 = canvas1.getContext("2d");
+
+			//① 初期化
+			const rect1 = {
+				x:100, y:100, w:50, h:50, color:"indigo",
+				dx:1, dy:1
+			};
+
+			//② 実行
+			setInterval(loop, 50);										//タイマ(関数名,ミリ秒)
+
+			function loop(){
+				//① 画面消去
+				ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+
+				//② 図形描画
+				rectDraw(rect1);
+
+				//③ 移動計算
+				rectCal(rect1);
+			}
+
+			function rectCal(rect){
+				rect.x += rect.dx;
+				rect.y += rect.dy;
+				console.log(rect.x);
+
+				if( (rect.x < rect.w/2) || (canvas1.width - rect.w/2 < rect.x) ){
+					rect.dx *= -1;
+				}
+
+				if( (rect.y < rect.h/2) || (canvas1.height - rect.h/2 < rect.y) ){
+					rect.dy *= -1;
+				}
+			}
+
+
+			//③ 定義
+			function rectDraw(rect){
+				ctx1.fillStyle = rect.color;
+				ctx1.fillRect(rect.x-rect.w/2, rect.y-rect.h/2, rect.w, rect.h);
+			}
+		</script>
+	</body>
+</html>
